@@ -2,26 +2,29 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: gcc.exe kompiluj aktywny plik",
-            "command": "C:\\Program Files (x86)\\mingw-w64\\i686-8.1.0-win32-dwarf-rt_v6-rev0\\mingw32\\bin\\gcc.exe",
+            "label": "build main",
+            "command": "C:\\Users\\Mateusz\\Documents\\mingw32\\bin\\g++.exe",
             "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "${file}",
+                "${workspaceFolder}\\src\\*.cpp",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${workspaceFolder}\\build\\main.exe",
+                "-O2",
+                "-Wall",
+                "-Wno-missing-braces",
+                "-I",
+                "${workspaceFolder}\\src\\",
+                "-L",
+                "${workspaceFolder}\\src\\",
+                "-lraylib",
+                "-lgdi32",
+                "-lwinmm"
             ],
-            "options": {
-                "cwd": "${fileDirname}"
-            },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "detail": "Zadanie wygenerowane przez debuger."
+        },
+        {
+            "type": "shell",
+            "label": "launch main.exe",
+            "command": "${workspaceFolder}\\build\\main.exe",
+            "dependsOn": ["build main"]
         }
     ],
     "version": "2.0.0"
