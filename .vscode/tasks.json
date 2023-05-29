@@ -24,6 +24,11 @@
             "type": "shell",
             "label": "launch main",
             "command": "${workspaceFolder}\\build\\main.exe",
+        },
+        {
+            "type": "shell",
+            "label": "build and launch main",
+            "command": "${workspaceFolder}\\build\\main.exe",
             "dependsOn": ["build main"]
         }
     ],
